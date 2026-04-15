@@ -1,0 +1,47 @@
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+const crypto = require('crypto');
+
+const storage = (folder) =>
+  multer.diskStorage({
+    destination: (req, file, cb) => {
+      const uploadPath = path.join(__dirname, "../../public", folder);
+
+      fs.mkdirSync(uploadPath, { recursive: true });
+
+      cb(null, uploadPath);
+    },
+    filename: (req, file, cb) => {
+      cb(null, crypto.randomBytes(3).toString('hex') + Date.now() + path.extname(file.originalname));
+    },
+  });
+
+const fileFilter = (req, file, cb) => {
+
+  if (
+    file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/png" ||
+    file.mimetype === "application/pdf" ||
+    file.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+    file.mimetype === "application/vnd.openxmlformats-officedocument.presentationml.presentation" ||
+    file.mimetype === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+    file.mimetype === "text/csv"
+  ) {
+    cb(null, true);
+  } else {
+    cb(new Error("Unsupported file"), false); 
+  }
+};
+
+const upload = (folder) =>
+  multer({
+    storage: storage(folder),
+    limits: {
+      fileSize: 1024 * 1024,
+    },
+    fileFilter: fileFilter,
+  });
+
+module.exports = upload;

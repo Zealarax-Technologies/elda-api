@@ -1,0 +1,29 @@
+const url = require("../config/url");
+const { paginationLinks } = require("../utils/paginate");
+
+function testimonyResource(testimony) {
+    return {
+        uuid: testimony.uuid,
+        name: testimony.name,
+        testimony: testimony.testimony,
+        image: testimony.image ? url(testimony.image) : null,
+    };
+}
+
+function testimonyCollection(testimonies) {
+    return {
+        data: testimonies.data.map(testimony => testimonyResource(testimony)),
+        meta: {
+            total: testimonies.total,
+            currentPage: testimonies.currentPage,
+            totalPage: testimonies.totalPages,
+            pageSize: testimonies.pageSize
+        },
+        links: paginationLinks('testimonies', testimonies.currentPage, testimonies.totalPages)
+    };
+}
+
+module.exports = {
+    testimonyResource,
+    testimonyCollection,
+};
