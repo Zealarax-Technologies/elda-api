@@ -1,4 +1,4 @@
-const whiteList = ['https://admin.regionaltradeinstitute.com', 'https://www.regionaltradeinstitute.com', 'http://localhost:3000'];
+const whiteList = ['http://localhost:5173'];
 
 const corsOptions = {
     origin: (origin, cb) => {
