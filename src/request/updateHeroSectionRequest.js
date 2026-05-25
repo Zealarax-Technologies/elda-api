@@ -3,12 +3,12 @@ const ApiResponses = require('../utils/apiResponse');
 const FormatJoiErrors = require('../utils/formatJoiErrors');
 
 const schema = Joi.object({
-    title: Joi.string().optional(),
-    caption: Joi.string().optional(),
-    cta1_title: Joi.string().max(255).optional(),
-    cta1_link: Joi.string().uri().optional(),
-    cta2_title: Joi.string().max(255).optional(),
-    cta2_link: Joi.string().uri().optional(),
+    title: Joi.string().optional().allow('', null),
+    caption: Joi.string().optional().allow('', null),
+    cta1_title: Joi.string().max(255).optional().allow('', null),
+    cta1_link: Joi.string().uri().optional().allow('', null),
+    cta2_title: Joi.string().max(255).optional().allow('', null),
+    cta2_link: Joi.string().uri().optional().allow('', null),
 });
 
 async function UpdateHeroSectionrequest(req, res, next)

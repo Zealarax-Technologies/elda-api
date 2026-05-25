@@ -23,6 +23,7 @@ const fileFilter = (req, file, cb) => {
     file.mimetype === "image/jpeg" ||
     file.mimetype === "image/jpg" ||
     file.mimetype === "image/png" ||
+    file.mimetype === "image/webp" ||
     file.mimetype === "application/pdf" ||
     file.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
     file.mimetype === "application/vnd.openxmlformats-officedocument.presentationml.presentation" ||

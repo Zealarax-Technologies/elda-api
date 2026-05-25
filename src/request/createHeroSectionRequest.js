@@ -5,12 +5,12 @@ const imageRemover = require('../utils/imageRemover');
 const FormatError = require('../utils/formatError');
 
 const schema = Joi.object({
-    title: Joi.string().required(),
-    caption: Joi.string().required(),
-    cta1_title: Joi.string().max(255).required(),
-    cta1_link: Joi.string().uri().required(),
-    cta2_title: Joi.string().max(255).required(),
-    cta2_link: Joi.string().uri().required(),
+    title: Joi.string().optional().allow('', null),
+    caption: Joi.string().optional().allow('', null),
+    cta1_title: Joi.string().max(255).optional().allow('', null),
+    cta1_link: Joi.string().uri().optional().allow('', null),
+    cta2_title: Joi.string().max(255).optional().allow('', null),
+    cta2_link: Joi.string().uri().optional().allow('', null),
 });
 
 async function CreateHeroSectionrequest(req, res, next)

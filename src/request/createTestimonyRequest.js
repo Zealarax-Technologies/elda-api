@@ -6,7 +6,9 @@ const FormatError = require('../utils/formatError');
 
 const schema = Joi.object({
     name: Joi.string().required(),
-    testimony: Joi.string().required()
+    quote: Joi.string().required(),
+    role: Joi.string().required(),
+    company: Joi.string().required()
 });
 
 async function CreateTestimonyRequest(req, res, next)
@@ -21,12 +23,12 @@ async function CreateTestimonyRequest(req, res, next)
         return ApiResponses(res, 422, 'Validation Errors', FormatJoiErrors(error.details));
     }
 
-    if(!req.file)
+    if(req.file)
     {
-        return ApiResponses(res, 422, 'Validation Errors', FormatError('image', 'image is required'));
+        // return ApiResponses(res, 422, 'Validation Errors', FormatError('image', 'image is required'));
+        value.image = 'testimony/'+req.file.filename;
     }
 
-    value.image = 'testimony/'+req.file.filename;
     req.testimonyData = value;
     next();
 }

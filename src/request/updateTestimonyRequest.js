@@ -5,7 +5,9 @@ const FormatJoiErrors = require('../utils/formatJoiErrors');
 
 const schema = Joi.object({
     name: Joi.string().optional(),
-    testimony: Joi.string().optional()
+    quote: Joi.string().optional(),
+    role: Joi.string().optional(),
+    company: Joi.string().optional(),
 });
 
 async function UpdateTestimonyRequest(req, res, next)

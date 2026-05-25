@@ -5,7 +5,9 @@ function testimonyResource(testimony) {
     return {
         uuid: testimony.uuid,
         name: testimony.name,
-        testimony: testimony.testimony,
+        quote: testimony.quote,
+        role: testimony.role,
+        company: testimony.company,
         image: testimony.image ? url(testimony.image) : null,
     };
 }
