@@ -56,32 +56,32 @@ function parseFormDataArray(body, fieldName) {
 }
 
 const schema = Joi.object({
-    title: Joi.string().optional(),
-    description: Joi.string().optional(),
-    programme_id: Joi.string().optional(),
-    course_code: Joi.string().optional(),
-    number_of_ects: Joi.string().optional(),
-    mandatory: Joi.boolean().optional(),
-    date: Joi.array().items(Joi.string()).optional(),
-    duration: Joi.string().optional(),
+    title: Joi.string().optional().allow('', null),
+    description: Joi.string().optional().allow('', null),
+    programme_id: Joi.string().optional().allow('', null),
+    course_code: Joi.string().optional().allow('', null),
+    number_of_ects: Joi.string().optional().allow('', null),
+    mandatory: Joi.boolean().optional().allow('', null),
+    date: Joi.array().items(Joi.string()).optional().allow('', null),
+    duration: Joi.string().optional().allow('', null),
     course_fee: Joi.array().items(
         Joi.object({
-            type: Joi.string().optional(),
-            cost: Joi.string().optional(),
+            type: Joi.string().optional().allow('', null),
+            cost: Joi.string().optional().allow('', null),
         })
-    ).optional(),
-    learning_outcomes: Joi.array().items(Joi.string()).optional(),
-    assessment: Joi.array().items(Joi.string()).optional(),
-    language: Joi.string().optional(),
-    staff: Joi.array().items(Joi.string()).optional(),
-    how_to_apply: Joi.array().items(Joi.string()).optional(),
-    entry_requirements: Joi.array().items(Joi.string()).optional(),
-    modules: Joi.array().items(Joi.string()).optional(),
-    status: Joi.string().valid('upcoming', 'latest', 'popular').optional(),
-    target_audience: Joi.string().optional(),
-    course_chair_bio: Joi.string().optional(),
-    location: Joi.string().optional(),
-    prospectus_link: Joi.string().uri({ scheme: ['https'] }).optional()
+    ).optional().allow('', null),
+    learning_outcomes: Joi.array().items(Joi.string()).optional().allow('', null),
+    assessment: Joi.array().items(Joi.string()).optional().allow('', null),
+    language: Joi.string().optional().allow('', null),
+    staff: Joi.array().items(Joi.string()).optional().allow('', null),
+    how_to_apply: Joi.array().items(Joi.string()).optional().allow('', null),
+    entry_requirements: Joi.array().items(Joi.string()).optional().allow('', null),
+    modules: Joi.array().items(Joi.string()).optional().allow('', null),
+    status: Joi.string().valid('upcoming', 'latest', 'popular').optional().allow('', null),
+    target_audience: Joi.string().optional().allow('', null),
+    course_chair_bio: Joi.string().optional().allow('', null),
+    location: Joi.string().optional().allow('', null),
+    prospectus_link: Joi.string().uri({ scheme: ['https'] }).optional().allow('', null)
 });
 
 async function UpdateCourseRequest(req, res, next) {
