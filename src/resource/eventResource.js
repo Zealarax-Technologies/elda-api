@@ -19,7 +19,7 @@ function eventResource(event) {
 }
 
 function eventCollection(events, paginate = true) {
-
+    
     if(paginate){
 
         return {

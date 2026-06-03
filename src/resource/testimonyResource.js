@@ -12,17 +12,22 @@ function testimonyResource(testimony) {
     };
 }
 
-function testimonyCollection(testimonies) {
-    return {
-        data: testimonies.data.map(testimony => testimonyResource(testimony)),
-        meta: {
-            total: testimonies.total,
-            currentPage: testimonies.currentPage,
-            totalPage: testimonies.totalPages,
-            pageSize: testimonies.pageSize
-        },
-        links: paginationLinks('testimonies', testimonies.currentPage, testimonies.totalPages)
-    };
+function testimonyCollection(testimonies, paginate = true) {
+
+    if(paginate){
+        return {
+            data: testimonies.data.map(testimony => testimonyResource(testimony)),
+            meta: {
+                total: testimonies.total,
+                currentPage: testimonies.currentPage,
+                totalPage: testimonies.totalPages,
+                pageSize: testimonies.pageSize
+            },
+            links: paginationLinks('testimonies', testimonies.currentPage, testimonies.totalPages)
+        };
+    }
+
+    return testimonies.map((testimony) => testimonyResource(testimony));
 }
 
 module.exports = {

@@ -23,6 +23,7 @@ const publicationCategoryController = require('../controller/publicationCategory
 const publicationController = require('../controller/publicationController');
 const socialMediaController = require('../controller/socialMediaController');
 const specialEnquiryController = require('../controller/specialEnquiryController');
+const testimonyController = require('../controller/testimonyController');
 const CreateCheckoutRequest = require('../request/createCheckoutRequest');
 const CreateContactFormRequest = require('../request/createContactFormRequest');
 
@@ -76,5 +77,7 @@ router.get('/social-medias', socialMediaController.getSocials);
 
 router.get('/account-details', accountDetailsController.getAccountDetails);
 router.post('/checkouts', CreateCheckoutRequest, checkoutController.store);
+
+router.get('/testimonies', testimonyController.getTestimonial);
 
 module.exports = router;

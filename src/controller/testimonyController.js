@@ -59,6 +59,16 @@ class TestimonyController{
 
         return ApiResponses(res, 400, 'Testimony Not Found');
     }
+
+    async getTestimonial(req, res){
+        const testimonials = await fetchAllTestimony.getTestimonial(req.query);
+        if(testimonials)
+        {
+            return ApiResponses(res, 200, 'All Testimonials', testimonyCollection(testimonials, (parseInt(req.query?.paginate) ? true : false)));
+        }
+
+        return ApiResponses(res, 200, 'No Testimonials Found');
+    }
 }
 
 module.exports = new TestimonyController();
