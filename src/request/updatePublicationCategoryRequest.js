@@ -7,7 +7,7 @@ const { Op } = require('sequelize');
 
 const schema = Joi.object({
     name: Joi.string().optional(),
-    type: Joi.string().valid('category', 'type').optional(),
+    type: Joi.string().valid('research centers', 'publications', 'collaborations').optional(),
     description: Joi.string().optional(),
 });
 

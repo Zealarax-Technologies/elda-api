@@ -6,7 +6,7 @@ const models = require('../models');
 
 const schema = Joi.object({
     name: Joi.string().required(),
-    type: Joi.string().valid('category', 'type').required(),
+    type: Joi.string().valid('research centers', 'publications', 'collaborations').required(),
     description: Joi.string().optional()
 });
 
